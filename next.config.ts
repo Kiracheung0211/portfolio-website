@@ -1,7 +1,21 @@
 /** @type {import('next').NextConfig} */
+import type { Configuration } from "webpack";
+
 const nextConfig = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  webpack(config: any) {
+  output: "export",
+  images: {
+    unoptimized: true,
+  },
+  webpack(config: Configuration) {
+    if (!config.module) {
+      config.module = {
+        rules: [],
+      };
+    }
+    if (!config.module.rules) {
+      config.module.rules = [];
+    }
+
     config.module.rules.push({
       test: /\.svg$/,
       use: ["@svgr/webpack"],

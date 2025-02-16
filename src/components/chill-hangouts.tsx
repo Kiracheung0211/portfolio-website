@@ -21,7 +21,7 @@ const ChillHangouts = () => {
         <div className="flex items-center gap-4 mb-6">
           <h1 className="text-4xl font-bold">Chill Hangouts</h1>
         </div>
-        <h2 className="text-xl text-gray-600 font-normal max-w-full pb-3">
+        <h2 className="text-lg text-gray-600 font-normal max-w-full pb-3">
           Too many hangouts start with “We should catch up”—but never happen.
         </h2>
         <h2 className="text-xl text-gray-600 font-normal max-w-full pb-3">
