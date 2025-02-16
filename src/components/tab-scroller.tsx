@@ -1,6 +1,3 @@
-// Navigation.jsx
-import girl from "../../public/girl.svg";
-import Image from "next/image";
 import GirlSVG from "./GirlSVG";
 
 const Navigation = () => {

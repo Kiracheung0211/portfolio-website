@@ -8,7 +8,7 @@ import Writing from "@/components/Writing";
 
 export default function Home() {
   return (
-    <main className="min-h-screen justify-center w-full flex flex-col items-center gap-6">
+    <main className="min-h-screen w-full flex flex-col gap-6 pb-10">
       <Navigation />
       <Hero />
       <Work />

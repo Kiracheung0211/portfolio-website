@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { Kalam } from "next/font/google";
 import Image from "next/image";
 import { motion, useAnimationControls } from "framer-motion";
+import { useCallback } from "react";
 
 const kalam = Kalam({
   subsets: ["latin"],
@@ -13,45 +14,51 @@ const PhotoGallery = () => {
   const containerRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const photoWidth = 416;
+  const photoGap = 50;
+  const totalWidth = photoWidth + photoGap;
+
   const photos = [
     {
       id: 1,
       src: "/mikey.png",
-      title: "Mikey",
-      icon: "☀️",
+      title: "Meet Mikey, my best friend who brings sunshine to every day.",
+      icon: "🐱",
     },
     {
       id: 2,
       src: "/north-korea.png",
-      title: "North Korea",
-      icon: "☀️",
+      title:
+        "I love traveling, and North Korea stands out as my most surreal adventure.",
+      icon: "🇰🇵",
     },
     {
       id: 3,
-      src: "/food.png",
-      title: "food",
-      icon: "☀️",
+      src: "/kenya.png",
+      title: "Another standout trip was Kenya, where I met incredible people.",
+      icon: "🦒",
     },
     {
       id: 4,
-      src: "/kenya.png",
-      title: "kenya",
-      icon: "☀️",
+      src: "/food.png",
+      title:
+        "My adventures are driven by food, always searching for the next amazing meal.",
+      icon: "😋",
     },
     {
       id: 5,
-      src: "/haiway.png",
-      title: "Haiway",
-      icon: "☀️",
+      src: "/painting.png",
+      title:
+        "This is my very first oil painting! I wanted to play with contrast, one side with makeup and one without, to show two different sides of beauty.",
+      icon: "🎨",
     },
   ];
 
-  const scrollToNext = async () => {
-    const photoWidth = 316; // 300px width + 16px gap
+  const scrollToNext = useCallback(async () => {
     const nextIndex = (currentIndex + 1) % photos.length;
 
     await controls.start({
-      x: -photoWidth * nextIndex,
+      x: -totalWidth * nextIndex,
       transition: {
         duration: 1,
         ease: "easeInOut",
@@ -59,39 +66,40 @@ const PhotoGallery = () => {
     });
 
     setCurrentIndex(nextIndex);
-  };
+  }, [currentIndex, controls, totalWidth, photos.length]);
 
   useEffect(() => {
-    const interval = setInterval(scrollToNext, 3000); // Change photo every 3 seconds
+    const interval = setInterval(scrollToNext, 3000);
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, [currentIndex, scrollToNext]);
 
-  const photoWidth = 416;
   return (
-    <div
-      className="overflow-hidden w-full flex justify-center"
-      ref={containerRef}
-    >
+    <div className="overflow-hidden w-full" ref={containerRef}>
       <motion.div
-        className="flex gap-8 py-8 pl-[calc(50%-200px)]"
+        className="flex"
         animate={controls}
         drag="x"
         dragConstraints={containerRef}
+        style={{
+          paddingLeft: "50%",
+          marginLeft: -photoWidth / 2,
+          gap: `${photoGap}px`,
+        }}
         onDragEnd={(_, info) => {
           const dragDistance = info.offset.x;
 
-          if (Math.abs(dragDistance) > photoWidth / 5) {
+          if (Math.abs(dragDistance) > totalWidth / 5) {
             const direction = dragDistance > 0 ? -1 : 1;
             const nextIndex =
               (currentIndex + direction + photos.length) % photos.length;
             setCurrentIndex(nextIndex);
             controls.start({
-              x: -photoWidth * nextIndex,
+              x: -totalWidth * nextIndex,
               transition: { duration: 0.5, ease: "easeOut" },
             });
           } else {
             controls.start({
-              x: -photoWidth * currentIndex,
+              x: -totalWidth * currentIndex,
               transition: { duration: 0.5, ease: "easeOut" },
             });
           }
@@ -100,17 +108,18 @@ const PhotoGallery = () => {
         {[...photos, ...photos].map((photo, index) => (
           <motion.div
             key={`${photo.id}-${index}`}
-            className="relative flex-shrink-0 bg-white p-4 rounded-sm shadow-lg h-fit"
+            className={`relative flex-shrink-0 bg-white rounded-sm shadow-lg h-fit ${
+              index % 2 === 0 ? "rotate-2" : "-rotate-2"
+            }`}
             style={{
-              transform: "rotate(-2deg)",
               padding: "12px 12px 20px 12px",
-              width: "400px",
+              width: `${photoWidth}px`,
             }}
           >
             {/* Doodle */}
-            {/* <span className="absolute top-6 right-6 text-2xl">
-              {photo.doodle}
-            </span> */}
+            <span className="absolute top-6 right-6 text-2xl">
+              {photo.icon}
+            </span>
 
             {/* Image */}
             <div className="relative overflow-hidden">
