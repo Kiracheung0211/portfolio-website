@@ -9,8 +9,7 @@ const Work = () => {
     <div id="work" className="min-h-screen">
       {/* Header */}
       <SectionHeader title="Work" />
-
-      <div className="space-y-6 flex flex-col items-center">
+      <div className="space-y-6 flex flex-col items-center ">
         <ChillHangouts />
         <WaverlyShowcase />
         <Linkflo />

@@ -57,7 +57,7 @@ export default function Hero() {
       className="h-screen flex relative w-full overflow-hidden bg-[#EAE7DC]"
     >
       {/* Text */}
-      <div className="flex flex-col items-center text-center pt-32 gap-6 max-w-screen-md mx-auto z-40 max-sm:pt-60">
+      <div className="flex flex-col items-center text-center pt-20 gap-6 max-w-screen-md mx-auto z-40 max-sm:pt-60">
         {/* Im Kira + hand */}
         <div className="flex items-center gap-">
           <motion.div
@@ -104,7 +104,7 @@ export default function Hero() {
             alt="kira headshot"
             width={600}
             height={600}
-            className="w-[600px] h-auto max-sm:w-fit"
+            className="w-[600px] max-h-[60vh] h-auto max-sm:w-fit object-contain"
             priority
           />
         </div>

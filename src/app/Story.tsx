@@ -5,12 +5,12 @@ import SectionHeader from "../components/section-header";
 
 const Story = () => {
   return (
-    <motion.div id="story" transition={{ duration: 0.3 }}>
-      <div className="flex flex-col justify-center items-center w-full px-8 max-sm:px-2 gap-6">
+    <motion.div id="story" className="w-full" transition={{ duration: 0.3 }}>
+      <div className="max-w-7xl mx-auto px-8 max-sm:px-2">
         {/* Title */}
         <SectionHeader title="Story" subtitle="Artist on the Move 🌍" />
-        <div className="flex flex-col  max-w-screen-xl mx-auto lg:flex-row h-[70vh] justify-between items-center gap-5 max-sm:h-fit">
-          {/* Story Text */}
+        {/* Story Text */}
+        <div className="flex flex-col lg:flex-row h-[70vh] lg:justify-between items-center gap-5 max-sm:h-fit">
           <div className="lg:w-1/2 flex flex-col h-full rounded-3xl justify-end px-8 py-10 bg-gray-100 gap-8">
             <h2>
               I&apos;m someone who can&apos;t stop exploring - whether it&apos;s

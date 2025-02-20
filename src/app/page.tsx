@@ -11,7 +11,7 @@ export default function Home() {
     <main className="w-screen flex flex-col gap-6 pb-10">
       <Navigation />
       <Hero />
-      <div className="flex flex-col justify-center items-center w-full px-8 max-sm:px-2 gap-6">
+      <div className="flex flex-col justify-center items-center w-full max-sm:px-2 gap-6">
         <Work />
         <Writing />
         <Story />
