@@ -22,12 +22,12 @@ const WaverlyShowcase = () => {
           <h1 className="text-4xl font-bold">Linkflo</h1>
         </div>
 
-        <h2 className="text-xl text-gray-600 font-normal max-w-full pb-3">
+        <h2>
           At Included VC, I built Linkflo to make investor matchmaking smarter.
           Using GPT-4 and custom LLMs, it analyzed investment theses and AUM
           requirements to pair GPs and LPs more accurately.
         </h2>
-        <h2 className="text-xl text-gray-600 font-normal max-w-full pb-3">
+        <h2>
           In the first month, it improved matching by 35% and led to five
           successful introductions—seeing AI make real connections was
           incredible!

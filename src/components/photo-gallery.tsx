@@ -108,7 +108,7 @@ const PhotoGallery = () => {
         {[...photos, ...photos].map((photo, index) => (
           <motion.div
             key={`${photo.id}-${index}`}
-            className={`relative flex-shrink-0 bg-white rounded-sm shadow-lg h-fit ${
+            className={`relative flex-shrink-0 bg-white rounded-sm shadow-lg h-fit  ${
               index % 2 === 0 ? "rotate-2" : "-rotate-2"
             }`}
             style={{
@@ -116,11 +116,6 @@ const PhotoGallery = () => {
               width: `${photoWidth}px`,
             }}
           >
-            {/* Doodle */}
-            <span className="absolute top-6 right-6 text-2xl">
-              {photo.icon}
-            </span>
-
             {/* Image */}
             <div className="relative overflow-hidden">
               <Image
@@ -134,7 +129,7 @@ const PhotoGallery = () => {
 
             {/* Caption */}
             <p
-              className={`${kalam.className} text-center mt-4 text-lg text-gray-800`}
+              className={`${kalam.className} text-center mt-4 text-md text-gray-800`}
             >
               {photo.title}
             </p>

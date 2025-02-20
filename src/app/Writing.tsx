@@ -1,10 +1,6 @@
 import React from "react";
 import { ChevronRight, Calendar } from "lucide-react";
-import { Kalam } from "next/font/google";
-const kalam = Kalam({
-  subsets: ["latin"],
-  weight: ["300", "400", "700"],
-});
+import SectionHeader from "../components/section-header";
 // Article data in JSON format
 const articles = [
   {
@@ -23,19 +19,13 @@ const articles = [
 
 const Writing = () => {
   return (
-    <div id="writing" className="flex h-fit bg-white">
+    <div id="writing" className="flex h-fit ">
       {/* Main Content */}
-      <div className="flex-1 p-8">
-        <div className="mb-16">
-          <p
-            className={`absolute pl-52 rotate-6 text-base text-gray-600 ${kalam.className} -normal max-w-full"`}
-          >
-            Thoughts on AI, startups & VC
-          </p>
-          <h1 className="text-8xl font-bold text-[#FD652D] tracking-tighter">
-            Writings
-          </h1>
-        </div>
+      <div className="flex flex-col justify-center items-center w-full px-8 max-sm:px-2 gap-6">
+        <SectionHeader
+          title="Writings"
+          subtitle="Thoughts on AI, startups & VC"
+        />
         <div className="max-w-screen-xl mx-auto h-fit">
           {articles.map((article) => (
             <div
@@ -60,9 +50,7 @@ const Writing = () => {
                 >
                   {article.paragraphs.map((paragraph, index) => (
                     <React.Fragment key={index}>
-                      <h2 className="text-xl text-gray-600 font-normal max-w-full">
-                        {paragraph}
-                      </h2>
+                      <h2>{paragraph}</h2>
                       {index < article.paragraphs.length - 1 && <br />}
                     </React.Fragment>
                   ))}
