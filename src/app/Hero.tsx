@@ -57,7 +57,7 @@ export default function Hero() {
       className="h-screen flex relative w-full overflow-hidden bg-[#EAE7DC]"
     >
       {/* Text */}
-      <div className="flex flex-col items-center text-center pt-20 gap-6 max-w-screen-md mx-auto z-40 max-sm:pt-60">
+      <div className="flex flex-col items-center text-center pt-28 gap-6 max-w-screen-md mx-auto z-40 max-sm:pt-60">
         {/* Im Kira + hand */}
         <div className="flex items-center gap-">
           <motion.div
