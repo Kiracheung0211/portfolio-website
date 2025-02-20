@@ -4,8 +4,11 @@ import { Send } from "lucide-react";
 
 const ContactPage = () => {
   return (
-    <div id="contact" className="w-full max-w-screen-xl mx-auto">
-      <div className="bg-gray-100 rounded-3xl">
+    <div
+      id="contact"
+      className="max-w-screen-xl mx-auto h-[30vh] flex items-start justify-center"
+    >
+      <div className="bg-gray-100 w-full rounded-3xl">
         <div className="flex flex-col items-center p-8 gap-4">
           {/* Email section */}
           <a

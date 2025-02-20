@@ -17,7 +17,7 @@ export default function Hero() {
     {
       text: "Product",
       position: Position.Top,
-      className: "text-4xl font-bold",
+      className: "text-4xl font-bold max-sm:text-2xl",
     },
     { text: "Designer", position: Position.Right, className: "text-xl" },
     { text: "Engineer", position: Position.Bottom, className: "text-xl" },
@@ -26,7 +26,7 @@ export default function Hero() {
 
   const positionStyles = {
     top: "top-1/3 right-1/3 -translate-x-1/2 -translate-y-2",
-    right: "top-1/2 right-1/4 translate-x-1/2 -translate-y-1/2",
+    right: "top-1/2 right-1/4 translate-x-1/2 -translate-y-1/2 ",
     bottom: "top-1/3 left-1/3 -translate-x-1/2 translate-y-16",
     left: "top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2",
   };
@@ -54,10 +54,10 @@ export default function Hero() {
   return (
     <div
       id="home"
-      className="flex h-[100vh] pt-16 relative w-full overflow-hidden bg-[#EAE7DC]"
+      className="h-screen flex relative w-full overflow-hidden bg-[#EAE7DC]"
     >
       {/* Text */}
-      <div className="flex flex-col items-center text-center pt-20 gap-6 max-w-screen-md mx-auto z-40">
+      <div className="flex flex-col items-center text-center pt-20 gap-6 max-w-screen-md mx-auto z-40 max-sm:pt-60">
         {/* Im Kira + hand */}
         <div className="flex items-center gap-">
           <motion.div
@@ -66,14 +66,14 @@ export default function Hero() {
             transition={{ duration: 0.5 }}
             className="text-center z-40"
           >
-            <h1 className="text-6xl font-bold">
+            <h1 className="text-6xl font-bold max-sm:text-4xl">
               Hi there, I&apos;m{" "}
               <span className="text-[#FD652D] z-40">Kira</span>
             </h1>
           </motion.div>
           {/* Hand */}
           <motion.span
-            className="text-6xl origin-bottom-right inline-block"
+            className="text-6xl origin-bottom-right inline-block max-sm:text-4xl"
             animate={{ rotate: [0, 14, -8, 14, -4, 10, 0] }}
             transition={{
               duration: 2.5,
@@ -87,7 +87,7 @@ export default function Hero() {
         </div>
 
         <motion.p
-          className="text-2xl text-gray-600 z-50 w-full"
+          className="text-2xl text-gray-600 z-50 w-full max-sm:text-lg"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
@@ -98,13 +98,13 @@ export default function Hero() {
 
       {/* Image + Roles*/}
       <div className="">
-        <div className="absolute left-1/2 -translate-x-1/2 bottom-0 z-20">
+        <div className="absolute left-1/2 -translate-x-1/2 bottom-0 z-20 max-sm:left-0 max-sm:-translate-x-0">
           <Image
             src="/kira-headshot.png"
             alt="kira headshot"
             width={600}
             height={600}
-            className="w-[600px] h-auto"
+            className="w-[600px] max-h-[60vh] h-auto max-sm:w-fit object-contain"
             priority
           />
         </div>
@@ -121,12 +121,12 @@ export default function Hero() {
             transition={{ delay: index * 0.2, duration: 0.5 }}
           >
             <motion.div
-              className={`flex items-center py-2 ${getFlexDirection(
-                role.position
-              )}`}
+              className={`${getFlexDirection(role.position)}`}
               whileHover={{ scale: 1.1 }}
             >
-              <span className={`${kalam.className} ${role.className}`}>
+              <span
+                className={`${kalam.className} ${role.className} max-sm:hidden`}
+              >
                 {role.text}
               </span>
 
@@ -135,7 +135,7 @@ export default function Hero() {
                 alt="right arrow"
                 width={100}
                 height={100}
-                className={`w-12 h-12 object-contain ${
+                className={`w-12 h-12 object-contain max-sm:hidden ${
                   arrowStyles[role.position]
                 }`}
                 priority

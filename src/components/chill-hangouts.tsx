@@ -1,11 +1,27 @@
 import React from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { ProjectImage } from "./type";
+import ProjectScreenshots from "./project-screenshot";
 
 const ChillHangouts = () => {
+  const images: ProjectImage[] = [
+    {
+      src: "/chillhangouts1.png",
+      alt: "Project Screenshot 1",
+      width: 400,
+      height: 500,
+    },
+    {
+      src: "/chillhangouts2.png",
+      alt: "Project Screenshot 2",
+      width: 300,
+      height: 500,
+    },
+  ];
+
   return (
     <motion.div
-      className="h-[70vh] max-w-screen-xl overflow-hidden p-8 rounded-3xl bg-gray-100"
+      className="h-[70vh] max-w-7xl mx-auto overflow-hidden p-8 rounded-3xl bg-gray-100 max-sm:h-[75vh]"
       initial={{
         background:
           "linear-gradient(45deg, #F5F5F5 0%, #F5F5F5 40%, #F5F5F5 100%)",
@@ -17,18 +33,18 @@ const ChillHangouts = () => {
       transition={{ duration: 0.3 }}
     >
       {/* Header Section */}
-      <div className="mx-auto mb-8">
+      <div className="mx-auto mb-8 max-sm:mb-2">
         <div className="flex items-center gap-4 mb-6">
           <h1 className="text-4xl font-bold">Chill Hangouts</h1>
         </div>
-        <h2 className="text-lg text-gray-600 font-normal max-w-full pb-3">
+        <h2>
           Too many hangouts start with “We should catch up”—but never happen.
         </h2>
-        <h2 className="text-xl text-gray-600 font-normal max-w-full pb-3">
+        <h2>
           I defined, designed, and built Chill Hangouts, a social app that makes
           it effortless to see when friends are free to meet up in real life.
         </h2>
-        <h2 className="text-xl text-gray-600 font-normal max-w-full pb-3">
+        <h2>
           Instead of endless group chats or guessing who&apos;s around, it finds
           the best time and a location that works for everyone. Turning a quick
           phone check into real plans.
@@ -36,42 +52,7 @@ const ChillHangouts = () => {
       </div>
 
       {/* Screenshots Section */}
-      <motion.div
-        className="max-w-6xl mx-auto relative px-16 cursor-pointer"
-        whileHover={{ y: -60 }}
-      >
-        <div className="max-w-6xl mx-auto relative">
-          <div className="grid grid-cols-2 gap-16">
-            {/* First Screenshot */}
-            <motion.div
-              className="transform -rotate-12 overflow-hidden flex justify-end"
-              style={{ transformStyle: "preserve-3d", perspective: "1000px" }}
-            >
-              <Image
-                src="/chillhangouts1.png"
-                alt="Waverly Community Feed"
-                className="w-[300px] h-auto rounded-3xl shadow-2xl"
-                width={400}
-                height={500}
-              />
-            </motion.div>
-
-            {/* Second Screenshot */}
-            <motion.div
-              className="overflow-hidden transform rotate-3"
-              style={{ transformStyle: "preserve-3d" }}
-            >
-              <Image
-                src="/chillhangouts2.png"
-                alt="Waverly Community Feed"
-                className="w-[300px] h-auto rounded-3xl shadow-2xl"
-                width={300}
-                height={500}
-              />
-            </motion.div>
-          </div>
-        </div>
-      </motion.div>
+      <ProjectScreenshots images={images} />
     </motion.div>
   );
 };
