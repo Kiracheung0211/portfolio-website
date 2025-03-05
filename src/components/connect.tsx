@@ -6,7 +6,7 @@ const ContactPage = () => {
   return (
     <div
       id="contact"
-      className="max-w-screen-xl mx-auto h-[30vh] flex items-start justify-center"
+      className="max-w-screen-xl mx-auto h-[30vh] flex items-start justify-center pb-72"
     >
       <div className="bg-gray-100 w-full rounded-3xl">
         <div className="flex flex-col items-center p-8 gap-4">

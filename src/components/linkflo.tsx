@@ -5,7 +5,7 @@ import Image from "next/image";
 const WaverlyShowcase = () => {
   return (
     <motion.div
-      className="h-[70vh] max-w-screen-xl overflow-hidden p-8 rounded-3xl bg-gray-100"
+      className="h-[70vh] max-w-screen-xl overflow-hidden p-8 rounded-3xl bg-gray-100 max-sm:h-2/3"
       initial={{
         background:
           "linear-gradient(45deg, #F5F5F5 0%, #F5F5F5 40%, #F5F5F5 100%)",
@@ -40,16 +40,16 @@ const WaverlyShowcase = () => {
         whileHover={{ y: -60, scale: 1.05 }}
       >
         <div className="max-w-6xl mx-auto relative">
-          <div className="flex justify-between py-20 overflow-visible ">
+          <div className="flex flex-row justify-between py-20 overflow-visible max-sm:flex-col max-sm:justify-center max-sm:py-0">
             {/* First Screenshot */}
             <motion.div
-              className="transform -rotate-12 overflow-hidden shadow-sm rounded-xl"
+              className="transform -rotate-12 overflow-hidden rounded-xl"
               style={{ transformStyle: "preserve-3d" }}
             >
               <Image
                 src="/linkflo1.png"
                 alt="Waverly Community Feed"
-                className="w-[2000px] h-auto"
+                className="w-full h-auto"
                 width={1500}
                 height={1200}
               />
@@ -63,7 +63,7 @@ const WaverlyShowcase = () => {
               <Image
                 src="/linkflo2.png"
                 alt="Waverly Community Feed"
-                className="w-[2000px] h-auto"
+                className="w-full  h-auto"
                 width={1500}
                 height={1200}
               />
