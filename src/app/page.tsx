@@ -8,10 +8,10 @@ import Writing from "@/app/Writing";
 
 export default function Home() {
   return (
-    <main className="w-screen flex flex-col gap-6 pb-10">
+    <main className="w-full flex flex-col gap-6 pb-10 overflow-x-hidden">
       <Navigation />
       <Hero />
-      <div className="flex flex-col justify-center items-center w-full max-sm:px-2 gap-6">
+      <div className="flex flex-col gap-6">
         <Work />
         <Writing />
         <Story />

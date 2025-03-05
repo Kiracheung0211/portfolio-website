@@ -22,7 +22,7 @@ const ProjectShowcase: React.FC<ProjectDetails> = ({
 }) => {
   return (
     <motion.div
-      className="h-[75vh] max-w-screen-xl overflow-hidden p-6 rounded-3xl bg-gray-100 max-sm:h-[85vh]"
+      className="h-[75vh] max-w-screen-xl overflow-hidden p-6 rounded-3xl bg-gray-100 max-sm:h-2/3"
       initial={{
         background:
           "linear-gradient(45deg, #F5F5F5 0%, #F5F5F5 40%, #F5F5F5 100%)",

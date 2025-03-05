@@ -21,7 +21,7 @@ const ChillHangouts = () => {
 
   return (
     <motion.div
-      className="h-[70vh] max-w-7xl mx-auto overflow-hidden p-8 rounded-3xl bg-gray-100 max-sm:h-[75vh]"
+      className="h-[70vh] max-w-7xl mx-auto overflow-hidden p-8 rounded-3xl bg-gray-100 max-sm:h-2/3"
       initial={{
         background:
           "linear-gradient(45deg, #F5F5F5 0%, #F5F5F5 40%, #F5F5F5 100%)",

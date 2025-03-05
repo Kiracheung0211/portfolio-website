@@ -14,9 +14,16 @@ const PhotoGallery = () => {
   const containerRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const photoWidth = 416;
+  // Use a percentage of viewport width instead of fixed pixels
   const photoGap = 50;
-  const totalWidth = photoWidth + photoGap;
+  const maxPhotoWidth = 416;
+
+  // Calculate totalWidth based on current viewport
+  const getTotalWidth = () => {
+    // Use min to cap at 416px on larger screens
+    const width = Math.min(maxPhotoWidth, window.innerWidth * 0.8);
+    return width + photoGap;
+  };
 
   const photos = [
     {
@@ -56,9 +63,10 @@ const PhotoGallery = () => {
 
   const scrollToNext = useCallback(async () => {
     const nextIndex = (currentIndex + 1) % photos.length;
+    const currentTotalWidth = getTotalWidth();
 
     await controls.start({
-      x: -totalWidth * nextIndex,
+      x: -currentTotalWidth * nextIndex,
       transition: {
         duration: 1,
         ease: "easeInOut",
@@ -66,7 +74,7 @@ const PhotoGallery = () => {
     });
 
     setCurrentIndex(nextIndex);
-  }, [currentIndex, controls, totalWidth, photos.length]);
+  }, [currentIndex, controls, photos.length]);
 
   useEffect(() => {
     const interval = setInterval(scrollToNext, 3000);
@@ -82,24 +90,25 @@ const PhotoGallery = () => {
         dragConstraints={containerRef}
         style={{
           paddingLeft: "50%",
-          marginLeft: -photoWidth / 2,
+          marginLeft: `calc(-1 * min(${maxPhotoWidth}px, 80vw) / 2)`,
           gap: `${photoGap}px`,
         }}
         onDragEnd={(_, info) => {
           const dragDistance = info.offset.x;
+          const currentTotalWidth = getTotalWidth();
 
-          if (Math.abs(dragDistance) > totalWidth / 5) {
+          if (Math.abs(dragDistance) > currentTotalWidth / 5) {
             const direction = dragDistance > 0 ? -1 : 1;
             const nextIndex =
               (currentIndex + direction + photos.length) % photos.length;
             setCurrentIndex(nextIndex);
             controls.start({
-              x: -totalWidth * nextIndex,
+              x: -currentTotalWidth * nextIndex,
               transition: { duration: 0.5, ease: "easeOut" },
             });
           } else {
             controls.start({
-              x: -totalWidth * currentIndex,
+              x: -currentTotalWidth * currentIndex,
               transition: { duration: 0.5, ease: "easeOut" },
             });
           }
@@ -113,7 +122,7 @@ const PhotoGallery = () => {
             }`}
             style={{
               padding: "12px 12px 20px 12px",
-              width: `${photoWidth}px`,
+              width: "min(416px, 80vw)",
             }}
           >
             {/* Image */}
